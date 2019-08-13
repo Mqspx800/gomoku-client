@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import store from './store'
+import { Provider } from 'react-redux'
+import { Route } from 'react-router-dom'
+import LoginFormContainer from './components/LoginForm/LoginFormContainer'
+import SignupFormContainer from './components/SignupForm/SignupFormContainer'
+import RoomListContainer from './components/RoomList/RoomListContainer'
+import RoomDetailsContainer from './components/RoomDetails/RoomDetailsContainer'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <div className="App">
+        <Route path="/" exact component={RoomListContainer} />
+        <Route path="/room/:id" component={RoomDetailsContainer} />
+        <Route path="/login" exact component={LoginFormContainer} />
+        <Route path="/signup" exact component={SignupFormContainer} />
+      </div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
