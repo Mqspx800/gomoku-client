@@ -10,7 +10,7 @@ export default function SignupForm(props) {
                 <h4>Create your account</h4>
                 <label>
                     Username:
-                <input type="text" required name="username" minLength="3" onChange={props.onChange} value={props.values.email} />
+                <input type="text" required name="username" minLength="4" onChange={props.onChange} value={props.values.email} />
                 </label>
 
                 <label>

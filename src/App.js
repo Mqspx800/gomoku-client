@@ -6,6 +6,7 @@ import LoginFormContainer from './components/LoginForm/LoginFormContainer'
 import SignupFormContainer from './components/SignupForm/SignupFormContainer'
 import RoomListContainer from './components/RoomList/RoomListContainer'
 import RoomDetailsContainer from './components/RoomDetails/RoomDetailsContainer'
+import RoomFormContainer from './components/RoomForm/RoomFormContainer'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="App">
         <Route path="/" exact component={RoomListContainer} />
         <Route path="/room/:id" component={RoomDetailsContainer} />
+        <Route path="/rooms/create" component={RoomFormContainer} />
         <Route path="/login" exact component={LoginFormContainer} />
         <Route path="/signup" exact component={SignupFormContainer} />
       </div>

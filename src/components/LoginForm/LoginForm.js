@@ -15,7 +15,7 @@ export default function LoginForm(props) {
                         <h4>Login your account</h4>
                         <label>
                             Username:
-                        <input type="text" required name="username" minLength="3" onChange={props.onChange} value={props.values.email} />
+                        <input type="text" required name="username" minLength="4" onChange={props.onChange} value={props.values.email} />
                         </label>
 
                         <label>
