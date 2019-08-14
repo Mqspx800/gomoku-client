@@ -1,13 +1,26 @@
 import * as React from 'react'
-import Square from './Square'
+import './Board.css'
 
 class Board extends React.Component {
     renderBoard(size) {
-        let board = []
+        const board = []
+        const { clickedSquares } = this.props.values
 
-        for (let i=0; i < size; i++) {
-            for (let j=0; j < size; j++) {
-                const square = <Square key={`${i}${j}`} value={`${i}${j}`} />
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                const x = clickedSquares.filter(square => square.x === `${i}-${j}`)
+                    .map((_,i) => <img className="icon" key={i} src="https://gomokuonline.com/images/blue.png" alt="icon"></img>)
+                const o = clickedSquares.filter(square => square.o === `${i}-${j}`)
+                    .map((_,i) => <img className="icon" key={i} src="https://gomokuonline.com/images/red.png" alt="icon"></img>)
+
+                const square =
+                    <button
+                        className="square"
+                        key={`${i}-${j}`}
+                        value={`${i}-${j}`}
+                        onClick={this.props.onClick}
+                    >{x}{o}
+                    </button>
                 board.push(square)
             }
             board.push(<br key={i} />)
@@ -18,10 +31,8 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="board-row">
-                    {this.renderBoard(10)}
-                </div>
+            <div className="board">
+                {this.renderBoard(15)}
             </div>
         );
     }

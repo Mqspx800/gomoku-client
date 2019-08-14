@@ -4,6 +4,14 @@ import RoomList from './RoomList'
 import { connect } from 'react-redux'
 
 class RoomListContainer extends Component {
+    state = { createMode: false }
+    
+    onClick = () => {
+        this.setState({
+            createMode: true
+        })
+    }
+
     componentDidMount() {
         this.props.getRooms()
     }
@@ -12,6 +20,8 @@ class RoomListContainer extends Component {
         return (
             <RoomList
                 rooms={this.props.rooms}
+                createMode={this.state.createMode}
+                onClick={this.onClick}
                 // player={this.props.player}
             />
         )

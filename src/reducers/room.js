@@ -1,11 +1,9 @@
-import { ALL_ROOMS, NEW_ROOM } from '../actions/rooms'
+import { ROOM_LOADED } from '../actions/rooms'
 
 export default function (state = [], action = {}) {
     switch (action.type) {
-        case ALL_ROOMS:
+        case ROOM_LOADED:
             return action.payload
-        case NEW_ROOM:
-            return [action.payload, ...state]
         default:
             return state
     }

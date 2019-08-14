@@ -1,0 +1,17 @@
+.board {
+    padding: 0 1em 0 1em
+}
+
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    border-collapse: collapse; 
+    padding: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon {
+    max-width: 12px;
+    max-height: 12px
+}
