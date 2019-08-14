@@ -1,43 +1,44 @@
 import React from 'react'
 import SignupForm from './SignupForm'
 import { connect } from 'react-redux'
-// import { signup } from '../../actions/users'
+import { signup } from '../../actions/player'
 
 class SignupFormContainer extends React.Component {
-    state = {
-        username: '',
-        password: ''
-    }
+  state = {
+    playerName: '',
+    password: ''
+  }
 
-    onSubmit = (event) => {
-        event.preventDefault()
-        // this.props.signup(this.state.email, this.state.password)
-    }
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.props.signup(this.state.playerName, this.state.password)
+  }
 
-    onChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
 
-    render() {
-        return <SignupForm
-            // user={this.props.user}
-            onSubmit={this.onSubmit}
-            onChange={this.onChange}
-            values={this.state}
-        />
-    }
+  }
+
+  render() {
+    return <SignupForm
+      player={this.props.player}
+      onSubmit={this.onSubmit}
+      onChange={this.onChange}
+      values={this.state}
+    />
+  }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         user: state.user
-//     }
-// }
+function mapStateToProps(state) {
+    return {
+        player: state.player
+    }
+}
 
 // const mapDispatchToProps = {
 //     signup
 // }
 
-export default connect()(SignupFormContainer)
+export default connect(mapStateToProps,{signup})(SignupFormContainer)

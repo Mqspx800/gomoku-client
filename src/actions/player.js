@@ -3,7 +3,7 @@ import request from 'superagent'
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:5000'
 
 function signupSuccess(payload) {
     return {
@@ -19,36 +19,32 @@ function loginSuccess(payload) {
     }
 }
 
-export const signup = (email, password) => dispatch => {
+export const signup = (playerName, password) => dispatch => {
     request
         .post(`${baseUrl}/player`)
-        .send({ email, password })
+        .send({ playerName, password })
         .then(response => {
+          console.log(response.body)
             const action = signupSuccess(response.body)
-
             dispatch(action)
         })
         .catch(err => {
-            if (err.message === 'Conflict') {
-                alert('This username was already used to register. Please choose another username to sign up.')
-            }
+            // if (err.message === 'Conflict') {
+            //     alert('This username was already used to register. Please choose another username to sign up.')
+            // }
             console.error(err)
         })
 }
 
-export const login = (email, password) => dispatch => {
+export const login = (playerName, password) => dispatch => {
     request
         .post(`${baseUrl}/login`)
-        .send({ email, password })
+        .send({ playerName, password })
         .then(response => {
             const action = loginSuccess(response.body)
-
             dispatch(action)
         })
         .catch(err => {
-            if (err.message === 'Bad Request') {
-                alert('Your username or password is incorrect!')
-            }
             console.error(err)
         })
 }
