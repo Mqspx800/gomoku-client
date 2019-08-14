@@ -2,12 +2,13 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
 function RoomList(props) {
-    const { rooms } = props
+    const { rooms, player } = props
 
     return (
         <div>
-            {/* {player.jwt && <h4>Welcome {player.username}</h4>} */}
+            {!player.jwt && <Redirect to={'/login'}></Redirect>}
             {props.createMode && <Redirect to={'/rooms/create'}></Redirect>}
+            {player.jwt && <h4>Welcome {player.playerName}</h4>}
 
             {!props.createMode && <button type="button" onClick={props.onClick}>Create new room</button>}
             {!props.createMode &&

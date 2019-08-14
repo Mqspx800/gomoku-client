@@ -24,15 +24,17 @@ export const signup = (playerName, password) => dispatch => {
         .post(`${baseUrl}/player`)
         .send({ playerName, password })
         .then(response => {
-          console.log(response.body)
             const action = signupSuccess(response.body)
             dispatch(action)
         })
         .catch(err => {
-            // if (err.message === 'Conflict') {
-            //     alert('This username was already used to register. Please choose another username to sign up.')
-            // }
-            console.error(err)
+            if (err.message === 'Conflict') {
+                alert('This username was already used to register. Please choose another username to sign up.')
+            }
+            // console.error("keys test:", Object.keys(error))
+            // console.error("original test:", error.original)
+            // console.error('response test:', error.response)
+            // console.error('status', error.status)
         })
 }
 

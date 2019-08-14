@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 export default function SignupForm(props) {
     return (
         <div>
-            {/* {/* <Link to={`/`}>Ad's list</Link> */}
             <Link to={`/login`}>Login</Link>
             <form onSubmit={props.onSubmit}>
                 <h4>Create your account</h4>
@@ -19,7 +18,7 @@ export default function SignupForm(props) {
                 </label>
 
                 <button type="submit">Create</button>
-                { props.player.id?  <p>Player created successfully!</p>:' ' }
+                { props.player.id && <p>Player created successfully! You can login with your account!</p>}
             </form>
         </div>)
 }

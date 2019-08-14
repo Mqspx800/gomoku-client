@@ -1,7 +1,8 @@
 import React from 'react'
+import request from 'superagent'
 import { connect } from 'react-redux'
-import { createRoom } from '../../actions/rooms'
 import RoomForm from './RoomForm'
+import { url } from '../../constants'
 
 class RoomFormContainer extends React.Component {
     state = {
@@ -23,10 +24,24 @@ class RoomFormContainer extends React.Component {
         })
     }
 
-    onSubmit = (event) => {
+    onSubmit = async (event) => {
         event.preventDefault()
 
-        this.props.createRoom(this.state)
+        await request
+            .post(`${url}/room`)
+            .send({
+                name: this.state.name,
+                board_size: this.state.boardSize,
+                playerId: this.props.player.playerId
+            })
+            .then(response => response.body.errors
+                ? this.setState({
+                errorMessage: response.body.errors[0].message}) 
+                : response)
+            // .then(_ => {
+            //     const room = this.props.rooms.find(room => room.players.find(playerId => this.props.player.playerId === playerId))
+            //     this.props.history.push(`/room/${room.id}`)
+            // })
 
         this.setState({
             name: '',
@@ -41,18 +56,17 @@ class RoomFormContainer extends React.Component {
             onChange={this.onChange}
             updateSelection={this.updateSelection}
             values={this.state}
+            rooms={this.props.rooms}
+            player={this.props.player}
         />)
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         player: state.player
-//     }
-// }
-
-const mapDispatchToProps = {
-    createRoom
+function mapStateToProps(state) {
+    return {
+        rooms: state.rooms,
+        player: state.player
+    }
 }
 
-export default connect(null, mapDispatchToProps)(RoomFormContainer)
+export default connect(mapStateToProps)(RoomFormContainer)

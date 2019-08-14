@@ -10,7 +10,7 @@ class RoomDetailsContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadRoom(Number(this.props.match.params.id))
+        // this.props.loadRoom(Number(this.props.match.params.id))
     }
 
     onClick = (event) => {
@@ -45,8 +45,8 @@ const mapStateToProps = state => ({
     // player: state.player
 })
 
-const mapDispatchToProps = {
-    loadRoom
-}
+// const mapDispatchToProps = {
+//     loadRoom
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoomDetailsContainer)
+export default connect(mapStateToProps)(RoomDetailsContainer)

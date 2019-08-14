@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { getRooms } from '../../actions/rooms'
 import RoomList from './RoomList'
 import { connect } from 'react-redux'
 
@@ -12,17 +11,13 @@ class RoomListContainer extends Component {
         })
     }
 
-    componentDidMount() {
-        this.props.getRooms()
-    }
-
     render() {
         return (
             <RoomList
                 rooms={this.props.rooms}
                 createMode={this.state.createMode}
                 onClick={this.onClick}
-                // player={this.props.player}
+                player={this.props.player}
             />
         )
     }
@@ -31,10 +26,8 @@ class RoomListContainer extends Component {
 function mapStateToProps(state) {
     return {
         rooms: state.rooms,
-        // player: state.player
+        player: state.player
     }
 }
 
-const mapDispatchToProps = { getRooms }
-
-export default connect(mapStateToProps, mapDispatchToProps)(RoomListContainer)
+export default connect(mapStateToProps)(RoomListContainer)
