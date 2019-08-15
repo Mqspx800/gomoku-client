@@ -10,7 +10,7 @@ function RoomDetails(props) {
         <div>
             <Link to={`/`} onClick={props.onClickNewGame}>New Game</Link>
             {room &&
-                <div>
+                <div className='roomDetail'>
                     <p>Welcome to {room.name} room, {player.playerName}!</p>
                     <p>Status: {room.status}</p>
 

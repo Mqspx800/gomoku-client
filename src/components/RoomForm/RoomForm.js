@@ -20,7 +20,7 @@ function RoomForm(props) {
                     </select>
                 </label>
 
-                <button type="submit">Create</button>
+                <button className='button' type="submit">Create</button>
                 {props.values.errorMessage && <p>{props.values.errorMessage}</p>}
             </form>
         </div>)

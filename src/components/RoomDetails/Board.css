@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Indie+Flower|Rokkitt&display=swap');
 .board {
     padding: 0 1em 0 1em
 }
@@ -6,10 +7,22 @@
     background: #fff;
     border: 1px solid #999;
     border-collapse: collapse; 
-    padding: 5px;
+    padding: 15px;
     width: 24px;
     height: 24px;
 }
+
+.square:hover {
+  background-color: rgba(95, 125, 180, 0.733);
+  opacity: 4;
+}
+
+div.roomDetail>p{
+  display: block;
+  font-family: 'Rokkitt', serif;
+  font-size: 1.5em
+}
+
 
 .icon {
     max-width: 12px;
