@@ -32,13 +32,9 @@ class SignupFormContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        player: state.player
-    }
+  return {
+    player: state.player
+  }
 }
 
-// const mapDispatchToProps = {
-//     signup
-// }
-
-export default connect(mapStateToProps,{signup})(SignupFormContainer)
+export default connect(mapStateToProps, { signup })(SignupFormContainer)

@@ -1,18 +1,18 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux'
- import { login } from '../../actions/player'
+import { login } from '../../actions/player'
 
 class LoginFormContainer extends React.Component {
-    state = { 
-        playerName: '', 
+    state = {
+        playerName: '',
         password: '',
         signupMode: false
     }
 
     onSubmit = (event) => {
         event.preventDefault()
-         this.props.login(this.state.playerName, this.state.password)
+        this.props.login(this.state.playerName, this.state.password)
     }
 
     onChange = (event) => {
@@ -44,6 +44,4 @@ function mapStateToProps(state) {
     }
 }
 
-
-
-export default connect(mapStateToProps,{login})(LoginFormContainer)
+export default connect(mapStateToProps, { login })(LoginFormContainer)

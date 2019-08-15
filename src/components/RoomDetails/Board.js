@@ -3,38 +3,53 @@ import './Board.css'
 
 class Board extends React.Component {
     renderBoard(size) {
+        const { room, player } = this.props
         const board = []
-        const { clickedSquares } = this.props.values
+
+        let player1Moves = []
+        let player2Moves = []
+
+        if (room.players.length === 2) {
+            player1Moves = room.players
+                .filter(p => p.id === player.playerId)[0].moves
+            player2Moves = room.players
+                .filter(p => p.id !== player.playerId)[0].moves
+        }
 
         for (let i = 0; i < size; i++) {
             for (let j = 0; j < size; j++) {
-                const x = clickedSquares.filter(square => square.x === `${i}-${j}`)
-                    .map((_,i) => <img className="icon" key={i} src="https://gomokuonline.com/images/blue.png" alt="icon"></img>)
-                const o = clickedSquares.filter(square => square.o === `${i}-${j}`)
-                    .map((_,i) => <img className="icon" key={i} src="https://gomokuonline.com/images/red.png" alt="icon"></img>)
+                const x = player1Moves.filter(move => move.x === j && move.y === i)
+                    .map((_, i) => <img className="icon" key={i} src="https://gomokuonline.com/images/blue.png" alt="icon"></img>)
+                const o = player2Moves.filter(move => move.x === j && move.y === i)
+                    .map((_, i) => <img className="icon" key={i} src="https://gomokuonline.com/images/red.png" alt="icon"></img>)
 
                 const square =
                     <button
                         className="square"
                         key={`${i}-${j}`}
                         value={`${i}-${j}`}
-                        onClick={this.props.onClick}
+                        onClick={this.props.onClickSquare}
                     >{x}{o}
                     </button>
                 board.push(square)
             }
             board.push(<br key={i} />)
         }
-
         return board
     }
 
     render() {
-        return (
-            <div className="board">
-                {this.renderBoard(15)}
-            </div>
-        );
+        const { room } = this.props
+
+        if (room) {
+            return (
+                <div className="board">
+                    {this.renderBoard(room.board_size)}
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 }
 

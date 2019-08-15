@@ -2,13 +2,13 @@ import React from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
 import RoomForm from './RoomForm'
+import { newRoom } from '../../actions/rooms'
 import { url } from '../../constants'
 
 class RoomFormContainer extends React.Component {
     state = {
         name: '',
-        boardSize: '',
-        selectionUpdated: false
+        boardSize: ''
     }
 
     onChange = (event) => {
@@ -19,8 +19,7 @@ class RoomFormContainer extends React.Component {
 
     updateSelection = (event) => {
         this.setState({
-            boardSize: event.target.value,
-            selectionUpdated: true
+            boardSize: event.target.value
         })
     }
 
@@ -36,18 +35,15 @@ class RoomFormContainer extends React.Component {
             })
             .then(response => response.body.errors
                 ? this.setState({
-                errorMessage: response.body.errors[0].message}) 
+                    errorMessage: response.body.errors[0].message
+                })
                 : response)
-            // .then(_ => {
-            //     const room = this.props.rooms.find(room => room.players.find(playerId => this.props.player.playerId === playerId))
-            //     this.props.history.push(`/room/${room.id}`)
-            // })
-
-        this.setState({
-            name: '',
-            boardSize: '',
-            selectionUpdated: false
-        })
+            .then(response => {
+                const room = response.body
+                newRoom(room)
+                this.props.history.push(`/room/${room.id}`)
+            })
+            .catch(err => console.error(err))
     }
 
     render() {
@@ -69,4 +65,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(RoomFormContainer)
+export default connect(mapStateToProps, { newRoom })(RoomFormContainer)

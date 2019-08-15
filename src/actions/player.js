@@ -1,9 +1,8 @@
 import request from 'superagent'
+import { url } from '../constants'
 
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-
-const baseUrl = 'http://localhost:5000'
 
 function signupSuccess(payload) {
     return {
@@ -21,32 +20,22 @@ function loginSuccess(payload) {
 
 export const signup = (playerName, password) => dispatch => {
     request
-        .post(`${baseUrl}/player`)
+        .post(`${url}/player`)
         .send({ playerName, password })
         .then(response => {
             const action = signupSuccess(response.body)
             dispatch(action)
         })
-        .catch(err => {
-            if (err.message === 'Conflict') {
-                alert('This username was already used to register. Please choose another username to sign up.')
-            }
-            // console.error("keys test:", Object.keys(error))
-            // console.error("original test:", error.original)
-            // console.error('response test:', error.response)
-            // console.error('status', error.status)
-        })
+        .catch(err => console.error(err))
 }
 
 export const login = (playerName, password) => dispatch => {
     request
-        .post(`${baseUrl}/login`)
+        .post(`${url}/login`)
         .send({ playerName, password })
         .then(response => {
             const action = loginSuccess(response.body)
             dispatch(action)
         })
-        .catch(err => {
-            console.error(err)
-        })
+        .catch(err => console.error(err))
 }

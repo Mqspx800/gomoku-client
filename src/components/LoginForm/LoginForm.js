@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default function LoginForm(props) {
   return (
@@ -8,11 +8,9 @@ export default function LoginForm(props) {
 
       {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
 
-      {/* {!props.values.signupMode && */}
       <div>
-        {/* <Link to={`/`}>Ad's list</Link> */}
         <form onSubmit={props.onSubmit}>
-          <h4>Login your account</h4>
+          <h4>Login your account to play Gomoku</h4>
           <label>
             Username:
              <input type="text" required name="playerName" minLength="4"

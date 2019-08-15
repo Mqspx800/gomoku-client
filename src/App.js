@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoginFormContainer from './components/LoginForm/LoginFormContainer'
 import SignupFormContainer from './components/SignupForm/SignupFormContainer'
@@ -22,6 +22,7 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
+          {!this.props.player.jwt && <Redirect to={'/login'}></Redirect>}
           <Route path="/" exact component={RoomListContainer} />
           <Route path="/room/:id" component={RoomDetailsContainer} />
           <Route path="/rooms/create" component={RoomFormContainer} />
@@ -32,8 +33,14 @@ class App extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    player: state.player
+  }
+}
+
 const mapDispatchToProps = {
   allRooms
 }
 
-export default connect (null, mapDispatchToProps)(App)
+export default connect (mapStateToProps, mapDispatchToProps)(App)
