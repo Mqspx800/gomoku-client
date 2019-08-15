@@ -21,7 +21,6 @@ class RoomDetailsContainer extends React.Component {
 
     onClickNewGame = async() => {
         const { id } = this.props.match.params
-
         await request
             .put(`${url}/room/leave/${parseInt(id)}`)
             .send({
@@ -38,23 +37,6 @@ class RoomDetailsContainer extends React.Component {
     }
 
     onClickSquare = async (event) => {
-        // const clickedSquare = this.state.clickedSquares
-        //     .find(square => square.x === event.target.value || square.o === event.target.value)
-
-        // if (!clickedSquare && this.state.xIsNext) {
-        //     this.state.clickedSquares.push({ x: event.target.value })
-        //     this.setState({
-        //         xIsNext: false
-        //     })
-        // }
-
-        // if (!clickedSquare && !this.state.xIsNext) {
-        //     this.state.clickedSquares.push({ o: event.target.value })
-        //     this.setState({
-        //         xIsNext: true
-        //     })
-        // }
-
         const { player } = this.props
         const { id } = this.props.match.params
         const room = this.props.rooms.find(room => room.id === parseInt(id))
@@ -68,7 +50,7 @@ class RoomDetailsContainer extends React.Component {
                     x: event.target.value.split('-')[1],
                     y: event.target.value.split('-')[0]
                 })
-                .then(response => console.log(response))
+                .then(response => console.log(response.text))
                 .catch(err => console.error(err))
     }
 
