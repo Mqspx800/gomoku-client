@@ -27,7 +27,7 @@ function RoomDetails(props) {
 
                     {room.status === 'await' && room.players.length === 2 &&
                         <div>
-                            <p>Two players joined! You can start the game</p>
+                            <p>{room.winner? `winner is ${room.winner}`:'Two players joined! You can start the game'} </p>
                             <button onClick={props.onClick}>Start game</button>
                         </div>
                     }

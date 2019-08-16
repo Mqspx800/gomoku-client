@@ -7,15 +7,15 @@
     background: #fff;
     border: 1px solid #999;
     border-collapse: collapse; 
-    padding: 15px;
+    padding: 1ex;
     width: 24px;
     height: 24px;
 }
 
-.square:hover {
+/* .square:hover {
   background-color: rgba(95, 125, 180, 0.733);
   opacity: 4;
-}
+} */
 
 div.roomDetail>p{
   display: block;
@@ -26,5 +26,6 @@ div.roomDetail>p{
 
 .icon {
     max-width: 12px;
-    max-height: 12px
+    max-height: 12px;
+    position: absolute;
 }
