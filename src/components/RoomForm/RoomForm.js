@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import './RoomForm.css'
 
 function RoomForm(props) {
     return (
@@ -13,7 +14,7 @@ function RoomForm(props) {
 
                 <label>
                     Board Size:
-                    <select required value={props.values.boardSize} onChange={props.updateSelection}>
+                    <select className="board-size" required value={props.values.boardSize} onChange={props.updateSelection}>
                         <option value=''>--choose board size--</option>
                         <option value='15'>15x15</option>
                         <option value='19'>19x19</option>

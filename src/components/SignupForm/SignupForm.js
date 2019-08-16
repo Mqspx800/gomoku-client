@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import './SignupForm.css'
 
 export default function SignupForm(props) {
   console.log(props.error)
@@ -22,8 +21,9 @@ export default function SignupForm(props) {
         </label>
 
         <button type="submit">Create</button>
-        {<p>{props.error.message}</p> || (props.player.id &&
-          <p>Player created successfully! You can login with your account!</p>)}
+        {props.error.message && <p>{props.error.message}</p>}
+        {props.player.id &&
+          <p>Player created successfully! You can login with your account!</p>}
       </form>
     </div>)
 }

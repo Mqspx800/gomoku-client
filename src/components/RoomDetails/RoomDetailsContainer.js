@@ -34,6 +34,7 @@ class RoomDetailsContainer extends React.Component {
   }
 
   onClick = async () => {
+    console.log('eeee')
     const { id } = this.props.match.params
     await request
       .put(`${url}/room/start/${parseInt(id)}`)
@@ -88,7 +89,7 @@ class RoomDetailsContainer extends React.Component {
       player={this.props.player}
       onClickNewGame={this.onClickNewGame}
       onClickSquare={this.onClickSquare}
-      onClick={this.sendMessage}
+      onClick={this.onClick}
     />
       {<ChatBox onChange={this.onChange} onSubmit={this.onSubmit} messages={room&&room.messages} values={this.state} />}
     </div>

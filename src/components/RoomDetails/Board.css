@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Indie+Flower|Rokkitt&display=swap');
+
 .board {
     padding: 0 1em 0 1em;
     float: left;
@@ -9,9 +10,10 @@
     background: #fff;
     border: 1px solid #999;
     border-collapse: collapse; 
-    padding: 1ex;
+    padding: 1vw;
     width: 24px;
     height: 24px;
+    margin: 0;
 }
 
  .square:hover {
@@ -31,9 +33,9 @@ div.roomDetail>p{
   font-size: 1.5em
 }
 
-
 .icon {
     max-width: 12px;
     max-height: 12px;
-    position: absolute;
+    position: relative;
+    display: block;
 }
