@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './RoomList.css'
 
 function RoomList(props) {
     const { rooms, player } = props
@@ -13,11 +14,11 @@ function RoomList(props) {
                     <div key={room.id}>
                         <h4>{room.name}</h4>
                         {room.players.length 
-                            ? <p>Players joined: 
+                            ? <p className='status'>Players joined: 
                             {room.players.length === 1 && <span>{room.players[0].playerName}</span>}
                             {room.players.length === 2 && <span>{room.players[0].playerName}, {room.players[1].playerName}</span>}
                             </p>
-                            : <p>{room.status}</p>}
+                            : <p className='status'>{room.status}</p>}
                         {room.players.length < 2 && <Link to={`/room/${room.id}`} onClick={props.onClick}>join</Link>}
                         {room.players.length === 2 && <p>full</p>}
                     </div>

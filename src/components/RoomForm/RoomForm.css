@@ -1,0 +1,11 @@
+.board-size {
+    color: brown;
+    background-color: lightblue;
+    margin: 0.7em;
+    border-radius: 10%;
+    font-weight: 700;
+    font-size: 0.8em;
+    font-family: 'Indie Flower', cursive;
+    text-rendering: optimizeLegibility;
+    display: inline-block;
+}

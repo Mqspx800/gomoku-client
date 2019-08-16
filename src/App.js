@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import './App.css'
 import LoginFormContainer from './components/LoginForm/LoginFormContainer'
 import SignupFormContainer from './components/SignupForm/SignupFormContainer'
 import RoomListContainer from './components/RoomList/RoomListContainer'

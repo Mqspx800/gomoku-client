@@ -39,6 +39,6 @@ export const login = (playerName, password) => dispatch => {
       dispatch(action)
     })
     .catch(err => {
-        dispatch({ type: LOGIN_ERROR,  err })
+      dispatch({ type: LOGIN_ERROR, err })
     })
 }

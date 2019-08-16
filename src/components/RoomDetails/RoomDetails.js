@@ -27,32 +27,26 @@ function RoomDetails(props) {
 
                     {room.status === 'await' && room.players.length === 2 &&
                         <div>
-                            <p>{room.winner? `winner is ${room.winner}`:'Two players joined! You can start the game'} </p>
+                            <p>{room.winner
+                                ? `Winner is ${room.winner}`
+                                : 'Two players joined! You can start the game'} </p>
                             <button onClick={props.onClick}>Start game</button>
                         </div>
                     }
 
-                    {/* <div id="scoreBoard">
-                        Score
-                        <div id="score">
-                            <span id="scorePlayer">Score1</span>
-                            <span> - </span>
-                            <span id="scorePlayer">Score2</span>
-                        </div>
-                        <div id="playersNames">
-                            <span id="playerNames">Player1</span>
-                            <span> - </span>
-                            <span id="playerNames">Player2</span>
-                        </div>
-                    </div> */}
-
                     {room.status === 'started' &&
                         <p>Next turn:
-                            <span>{room.players.length === 2 && room.players
-                                    .filter(player => player.id === room.turn)
-                                    .map(player => player.playerName)}
-                            </span>
-                        </p>
+                        {room.players
+                            .filter(player => player.id === room.turn)
+                            .map(player => {
+                                if (player.id === room.players
+                                    .find(p => p.id === props.player.playerId).id) {
+                                    return <span id='blueText'>{player.playerName}</span>
+                                } else {
+                                    return <span id='redText'>{player.playerName}</span>
+                                }
+                            })}
+                    </p>
                     }
                 </div>
             }

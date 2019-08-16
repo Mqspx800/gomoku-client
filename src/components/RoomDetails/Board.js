@@ -5,15 +5,14 @@ class Board extends React.Component {
     renderBoard(size) {
         const { room, player } = this.props
         const board = []
-
         let player1Moves = []
         let player2Moves = []
 
         if (room.players.length === 2) {
             player1Moves = room.players
-                .filter(p => p.id === player.playerId)[0].moves
+                .find(p => p.id === player.playerId).moves
             player2Moves = room.players
-                .filter(p => p.id !== player.playerId)[0].moves
+                .find(p => p.id !== player.playerId).moves
         }
 
         for (let i = 0; i < size; i++) {
