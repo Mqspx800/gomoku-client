@@ -68,7 +68,6 @@ class RoomDetailsContainer extends React.Component {
                     x: event.target.value.split('-')[1],
                     y: event.target.value.split('-')[0]
                 })
-                .then(response => console.log(response))
                 .catch(err => console.error(err))
     }
 

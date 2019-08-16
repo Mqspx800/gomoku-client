@@ -32,26 +32,18 @@ function RoomDetails(props) {
                         </div>
                     }
 
-                    {/* <div id="scoreBoard">
-                        Score
-                        <div id="score">
-                            <span id="scorePlayer">Score1</span>
-                            <span> - </span>
-                            <span id="scorePlayer">Score2</span>
-                        </div>
-                        <div id="playersNames">
-                            <span id="playerNames">Player1</span>
-                            <span> - </span>
-                            <span id="playerNames">Player2</span>
-                        </div>
-                    </div> */}
-
                     {room.status === 'started' &&
                         <p>Next turn:
-                            <span>{room.players.length === 2 && room.players
-                                    .filter(player => player.id === room.turn)
-                                    .map(player => player.playerName)}
-                            </span>
+                            {room.players
+                                .filter(player => player.id === room.turn)
+                                .map(player => {
+                                    if (player.id === room.players
+                                        .find(p => p.id === props.player.playerId).id) {
+                                        return <span id='blueText'>{player.playerName}</span>
+                                    } else {
+                                        return <span id='redText'>{player.playerName}</span>
+                                    }
+                                })}
                         </p>
                     }
                 </div>
