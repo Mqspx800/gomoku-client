@@ -27,7 +27,9 @@ export const signup = (playerName, password) => dispatch => {
       const action = signupSuccess(response.body)
       dispatch(action)
     })
-    .catch(err => console.error(err))
+    .catch(err =>
+      dispatch({ type: LOGIN_ERROR, err })
+    )
 }
 
 export const login = (playerName, password) => dispatch => {
@@ -39,6 +41,6 @@ export const login = (playerName, password) => dispatch => {
       dispatch(action)
     })
     .catch(err => {
-        dispatch({ type: LOGIN_ERROR,  err })
+      dispatch({ type: LOGIN_ERROR, err })
     })
 }

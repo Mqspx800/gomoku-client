@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Indie+Flower|Rokkitt&display=swap');
 .board {
-    padding: 0 1em 0 1em
+    padding: 0 1em 0 1em;
+    float: left;
+    margin-left: 15em;
 }
 
 .square {
@@ -12,10 +14,16 @@
     height: 24px;
 }
 
-/* .square:hover {
+ .square:hover {
   background-color: rgba(95, 125, 180, 0.733);
   opacity: 4;
-} */
+} 
+
+.message-box {
+  height: 280px;
+  overflow-y: scroll;
+}
+
 
 div.roomDetail>p{
   display: block;

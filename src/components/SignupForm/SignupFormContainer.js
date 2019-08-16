@@ -26,13 +26,15 @@ class SignupFormContainer extends React.Component {
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
+      error={this.props.error}
     />
   }
 }
 
 function mapStateToProps(state) {
   return {
-    player: state.player
+    player: state.player,
+    error: state.error
   }
 }
 

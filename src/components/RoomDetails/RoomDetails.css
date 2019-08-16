@@ -5,3 +5,12 @@
 #redText {
     color: red
 }
+
+.msgBox{
+  float: right;
+  margin-right: 2em
+}
+
+.roomDetails{
+  display: inline;
+}
