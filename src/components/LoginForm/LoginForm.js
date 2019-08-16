@@ -27,7 +27,7 @@ export default function LoginForm(props) {
 
           <button type="submit">Login</button>
 
-         <p>{props.error.message||"Don't have an account yet? Sign up to create an account"}</p>
+         <p>{(props.error&&props.error.message)||"Don't have an account yet? Sign up to create an account"}</p>
 
           <button type="button" onClick={props.onClick}>Sign up</button>
         </form>
